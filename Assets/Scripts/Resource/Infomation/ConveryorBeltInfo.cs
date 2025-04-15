@@ -1,4 +1,4 @@
-﻿namespace Resource {
+﻿namespace Resource.Infomation {
     [System.Serializable]
     public class ConveryorBeltInfo {
         public float speed = 1.0f;
