@@ -2,9 +2,9 @@
     public enum StructureDirection {
         None,
         Up,
+        Right,
         Down,
         Left,
-        Right
     }
 
     [System.Serializable]

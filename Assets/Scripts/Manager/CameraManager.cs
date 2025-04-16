@@ -39,13 +39,13 @@ namespace Manager {
 
             return distance.normalized;
         }
-        private Vector3 ScreenRayToWorldPointLocal(Vector3 screen_point, int layer_mask, float max_length) {
+        private Vector3 ScreenRayToWorldPointLocal(Vector3 screen_point, out RaycastHit hit, int layer_mask, float max_length) {
             var camera = Camera;
 
             var ray = camera.ScreenPointToRay(screen_point);
-            if (Physics.Raycast(ray, out var hit, max_length, layer_mask)) {
+            if (Physics.Raycast(ray, out hit, max_length, layer_mask)) {
                 var point = hit.point;
-
+                
                 if (Mathf.Abs(point.y) <= ConstValue.EPSILON) {
                     point.y = 0.0f;
                 }
@@ -58,6 +58,7 @@ namespace Manager {
 
         public static bool IsPointInCorner(Vector3 screen_point, float sensitivity) => Instance.IsPointInCornerLocal(screen_point, sensitivity);
         public static Vector3 GetPointDirection(Vector3 screen_point) => Instance.GetPointDirectionLocal(screen_point); 
-        public static Vector3 ScreenRayToWorldPoint(Vector3 screen_point, int layer_mask = -1, float max_length = Mathf.Infinity) => Instance.ScreenRayToWorldPointLocal(screen_point, layer_mask, max_length);
+        public static Vector3 ScreenRayToWorldPoint(Vector3 screen_point, int layer_mask = -1, float max_length = Mathf.Infinity) => Instance.ScreenRayToWorldPointLocal(screen_point, out _, layer_mask, max_length);
+        public static Vector3 ScreenRayToWorldPoint(Vector3 screen_point, out RaycastHit hit, int layer_mask = -1, float max_length = Mathf.Infinity) => Instance.ScreenRayToWorldPointLocal(screen_point, out hit, layer_mask, max_length);
     }
 }

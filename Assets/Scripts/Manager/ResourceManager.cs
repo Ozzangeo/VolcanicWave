@@ -5,7 +5,7 @@ namespace Manager {
     public class ResourceManager : BasicManager<ResourceManager> {
         public IObjectPool<BasicResource> Pool { get; private set; }
 
-        private void Awake() {
+        protected override void OnAwake() {
             Pool = new ObjectPool<BasicResource>(ResourceCreate, OnResourceTake, OnResourceReturn, OnResourceDestroy);
         }
 

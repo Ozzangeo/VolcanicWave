@@ -1,14 +1,15 @@
-﻿using Resource.GameData;
+﻿using Interaface;
+using Interface;
+using Resource.GameData;
 using Resource.Infomation;
-using Resource.Interface;
 using UnityEngine;
 
 namespace Resource {
-    public class BasicResource : MonoBehaviour, ISelectable {
+    public class BasicResource : MonoBehaviour, IReleaseable, ISelectable {
         [field: SerializeField] public virtual ResourceInfo Info { get; protected set; } = new();
         [field: SerializeField] public virtual ResourceData Data { get; protected set; } = new();
 
-        public int Type => Info.type;
+        public ResourceType Type => Info.type;
         public float Progress {
             get => Data.progress;
             set => Data.progress = value;
