@@ -1,13 +1,10 @@
-﻿using Define;
-using Interaface;
+﻿using Interaface;
 using Resource.GameData;
 using Structure.Interface;
 using UnityEngine;
 
 namespace Structure {
-    public class BasicStructure : MonoBehaviour, IStructure, IReleaseable {
-        public static readonly Vector3[] ChainLink4Ways = new Vector3[] { Vector3.left, Vector3.right, Vector3.forward, Vector3.back };
-
+    public class StructureBehaviour : MonoBehaviour, IStructure, IReleaseable {
         [field: SerializeField] public virtual StructureData Data { get; protected set; } = new();
 
         public StructureDirection Direction {
@@ -15,6 +12,7 @@ namespace Structure {
             set => Data.direction = value;
         }
 
+        #region Utility
         public static Vector3 GetStructureDirectionVector(IStructure structure)
             => DirectionToVector(structure.Direction);
         public static Vector3 DirectionToVector(StructureDirection direction) =>
@@ -47,25 +45,34 @@ namespace Structure {
 
             return StructureDirection.None;
         }
+        #endregion
 
-        public virtual void Link() {}
-        public virtual void ChainLink() {
-            foreach (var direction in ChainLink4Ways) {
-                if (Physics.Raycast(transform.position, direction, out var hit, 1.0f, LayerMasks.StructureMask)) {
-                    if (hit.transform.TryGetComponent<ILinkable>(out var linkable)) {
-                        linkable.Link();
+        #region Implement for IConnectable
+        public static readonly Vector3[] ConnectAround4Ways = new Vector3[] { Vector3.left, Vector3.right, Vector3.forward, Vector3.back, Vector3.down };
+       
+        [field: SerializeField] public virtual LayerMask ConnectLayer { get; set; }
 
-                        if (linkable is MonoBehaviour mono) {
-                            Debug.Log($"{name} link! -> {mono.name}");
+        public virtual void Connect() {}
+        public virtual void Disconnect() {}
+
+        public virtual void ConnectAround() {
+            foreach (var direction in ConnectAround4Ways) {
+                if (Physics.Raycast(transform.position, direction, out var hit, 1.0f, ConnectLayer)) {
+                    if (hit.transform.TryGetComponent<IConnectable>(out var connectable)) {
+                        if (connectable is MonoBehaviour mono) {
+                            Debug.Log($"[ Connect Around ] {transform.position} connect notify to {mono.transform.position}");
                         }
+
+                        connectable.Connect();
                     }
                 }
             }
         }
-        public virtual void LinkClear() {}
-
+        #endregion
+        #region Implement for IReleaseable
         public virtual void Release() {
             Destroy(gameObject);
         }
+        #endregion
     }
 }

@@ -1,19 +1,23 @@
 ﻿using Define;
+using Mono.Cecil;
 using Resource;
 using Resource.GameData;
-using Resource.Infomation;
+using Structure.Infomation;
 using Structure.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace Structure {
-    public class BasicConveryorBelt : BasicStructure, IResourceReceivable, ILinkable {
-        public static readonly Vector3 RESOURCE_VISUAL_OFFSET = Vector3.up * 0.5f;
+    public class ConveryorBelt : StructureBehaviour, IResourceReceivable, IConnectable {
+        public static readonly Vector3 RESOURCE_VISUAL_OFFSET = Vector3.zero;
 
         [field: SerializeField] public virtual ConveryorBeltInfo Info { get; protected set; } = new();
 
         public virtual IResourceReceivable Next { get; set; }
+        public virtual List<IStructure> Previous { get; protected set; } = new();
+        public event Action OnDependencyChanged;
 
         [field: Header("Resources")]
         [field: SerializeField] public virtual List<BasicResource> Resources { get; protected set; } = new();
@@ -23,19 +27,22 @@ namespace Structure {
 
         public IEnumerable<BasicResource> AllResources => Resources.Concat(RestResources);
         public BasicResource LastResource => AllResources.OrderBy(o => o.Progress).FirstOrDefault();
-        public BasicResource LastRestResource => RestResources.OrderBy(o => o.Progress).FirstOrDefault();
 
         public float TotalRestWeight => RestResources.Sum(o => o.Info.weight);
         public float TotalWeight => TotalRestWeight + Resources.Sum(o => o.Info.weight);
 
         public bool IsBeltEnd => Next == null;
+        public bool IsBeltStart => Previous.Count <= 0;
 
         protected virtual void Update() {
             if (!IsBeltEnd && RestResources.Any()) {
-                foreach (var resource in RestResources) {
-                    UnRestResource(resource);
+                var first = RestResources.First();
+                if (Next.IsResourceReceivable(first)) {
+                    foreach (var resource in RestResources) {
+                        UnRestResource(resource);
+                    }
+                    RestResources.Clear();
                 }
-                RestResources.Clear();
             }
 
             foreach (var resource in Resources) {
@@ -72,6 +79,7 @@ namespace Structure {
             }
             ThrowResources.Clear();
         }
+        
         public bool IsResourceReceivable(BasicResource resource) {
             if (!Info.type.HasFlag(resource.Type)) {
                 return false;
@@ -127,30 +135,97 @@ namespace Structure {
             Resources.Add(resource);
         }
 
-        [ContextMenu("Link")]
-        public override void Link() {
-            LinkClear();
-            
+        #region Implement for IConnectable
+        [ContextMenu("Connect")]
+        public override void Connect() {
+            NotNotifyDisconnect();
+
             var direction = GetStructureDirectionVector(this);
 
-            if (Physics.Raycast(transform.position, direction, out var hit, 1.0f, LayerMasks.StructureMask)) {
+            if (Physics.Raycast(transform.position, direction, out var hit, 1.0f, ConnectLayer)) {
                 if (hit.transform.TryGetComponent<IResourceReceivable>(out var receivable)) {
+                    if (receivable is IStructure structure) {
+                        if (Mathf.Abs(Direction - structure.Direction) == 2) {
+                            return;
+                        }
+                    }
+
                     Next = receivable;
+
+                    if (Next is ConveryorBelt next_belt) {
+                        next_belt.AddPrevious(this);
+
+                        next_belt.OnDependencyChanged?.Invoke();
+
+                        //Debug.Log($"[ Connect ] {transform.position} connect to {next_belt.transform.position}");
+
+                        transform.name = $"{transform.position}";
+                        next_belt.transform.name = $"{next_belt.transform.position}";
+                    }
                 }
             }
+
+            OnDependencyChanged?.Invoke();
+        }
+        [ContextMenu("Disconnect")]
+        public override void Disconnect() {
+            NotNotifyDisconnect();
+
+            OnDependencyChanged?.Invoke();
+        }
+        public void NotNotifyDisconnect() {
+            if (Next is ConveryorBelt next_belt) {
+                next_belt.RemoveAtPrevious(this);
+            }
+
+            Next = null;
         }
 
-        [ContextMenu("Link Clear")]
-        public override void LinkClear() {
-            Next = null;
+        [ContextMenu("Connect Around")]
+        public override void ConnectAround() {
+            base.ConnectAround();
+
+            OnDependencyChanged?.Invoke();
+        }
+        #endregion
+
+        [ContextMenu("Print Dependency")]
+        public void PrintDependency() {
+            Debug.Log($"Next: {Next != null}, Previous: {Previous.Count}");
         }
 
         public override void Release() {
             base.Release();
 
+            foreach (var previous in Previous) {
+                if (previous is ConveryorBelt previous_belt) {
+                    previous_belt.Next = null;
+                }
+            }
+            Previous.Clear();
+
+            if (Next is ConveryorBelt next_belt) {
+                next_belt.RemoveAtPrevious(this);
+            }
+            Next = null;
+
             foreach (var resource in AllResources) {
                 resource.Release();
             }
+        }
+
+        private void AddPrevious(ConveryorBelt belt) {
+            if (!Previous.Contains(belt)) {
+                Previous.Add(belt);
+            }
+
+            belt.Next = this;
+
+            OnDependencyChanged?.Invoke();
+        }
+
+        private void RemoveAtPrevious(ConveryorBelt belt) {
+            Previous.Remove(belt);
         }
 
         protected Vector3 GetOffsetByProgress(BasicResource resource) {

@@ -30,9 +30,7 @@ namespace Resource {
             }
 
             if (!Data.isRest) {
-                float weight_rate = Info.weight / 10.0f;
-
-                Data.progress += Data.tickRate * weight_rate * Time.deltaTime;
+                Data.progress += Data.tickRate * Time.deltaTime;
             }
         }
 

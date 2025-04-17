@@ -1,10 +1,10 @@
 ﻿namespace Resource.GameData {
     public enum StructureDirection {
-        None,
-        Up,
         Right,
-        Down,
+        Up,
         Left,
+        Down,
+        None,
     }
 
     [System.Serializable]

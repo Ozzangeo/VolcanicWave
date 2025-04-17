@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ground Brush
   m_EditorClassIdentifier: 
   m_Cells:
-  - m_GameObject: {fileID: 7791760512544140602, guid: a9b5438671ae4a548a4b2dfaa2cff0d5, type: 3}
+  - m_GameObject: {fileID: 7791760512544140602, guid: 1aabf929c925bad44a068b215b5b2398, type: 3}
     m_Offset: {x: 0, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     m_Orientation: {x: 0, y: 0, z: 0, w: 1}

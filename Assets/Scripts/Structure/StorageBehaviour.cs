@@ -1,21 +1,21 @@
 ﻿using Define;
 using Resource;
 using Resource.GameData;
-using Resource.Infomation;
 using Resource.Infomation.Structure;
+using Structure.Infomation;
 using Structure.Interface;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Structure {
-    public class BasicStorage : BasicStructure, IResourceReceivable {
+    public class StorageBehaviour : StructureBehaviour, IResourceReceivable {
         [SerializeField] private StorageResource _tempStorage = null;
         [SerializeField] private StorageData _data = new();
 
         [field: SerializeField] public StorageInfo Info { get; protected set; } = new();
         public override StructureData Data => _data;
 
-        [field: SerializeField] public List<BasicConveryorBelt> ConveryorBelts { get; protected set; } = new();
+        [field: SerializeField] public List<ConveryorBelt> ConveryorBelts { get; protected set; } = new();
 
         private void Update() {
             foreach (var converyor_belt in ConveryorBelts) { 
@@ -37,13 +37,14 @@ namespace Structure {
             }
         }
 
-        [ContextMenu("Link")]
-        public override void Link() {
-            LinkClear();
+        #region Implement for IConnectable
+        [ContextMenu("Connect")]
+        public override void Connect() {
+            Disconnect();
 
-            foreach (var direction in ChainLink4Ways) {
+            foreach (var direction in ConnectAround4Ways) {
                 if (Physics.Raycast(transform.position, direction, out var hit, 1.0f, LayerMasks.StructureMask)) {
-                    if (hit.transform.TryGetComponent<BasicConveryorBelt>(out var belt)) {
+                    if (hit.transform.TryGetComponent<ConveryorBelt>(out var belt)) {
                         var belt_direction = GetStructureDirectionVector(belt);
 
                         var distance = (belt.transform.position + belt_direction) - transform.position;
@@ -56,11 +57,11 @@ namespace Structure {
                 }
             }
         }
-
-        [ContextMenu("Link Clear")]
-        public override void LinkClear() {
+        [ContextMenu("Disconnect")]
+        public override void Disconnect() {
             ConveryorBelts.Clear();
         }
+        #endregion
 
         public bool IsResourceReceivable(BasicResource resource) {
             if (!Info.isReceivable) {

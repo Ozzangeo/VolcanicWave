@@ -3,7 +3,7 @@ using Structure.Interface;
 using UnityEngine;
 
 namespace Structure {
-    public class BasicConsumer : BasicStructure, IResourceReceivable {
+    public class BasicConsumer : StructureBehaviour, IResourceReceivable {
         [field: SerializeField] public int Resources { get; set; } = new();
         
         public bool IsResourceReceivable(BasicResource resource) {

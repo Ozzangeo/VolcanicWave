@@ -1,4 +1,6 @@
-﻿namespace Resource.Infomation {
+﻿using Resource.Infomation;
+
+namespace Structure.Infomation {
     [System.Serializable]
     public class ConveryorBeltInfo {
         public ResourceType type = ResourceType.None;

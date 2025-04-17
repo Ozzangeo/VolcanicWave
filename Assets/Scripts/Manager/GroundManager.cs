@@ -1,8 +1,6 @@
 ﻿using Define;
-using Ground;
-using Resource.GameData;
 using Structure;
-using System;
+using Resource.GameData;
 using System.Collections.Generic;
 using UnityEngine;
 using Utility;
@@ -16,14 +14,22 @@ namespace Manager {
         [field: SerializeField] public Vector3 OnDownGroundPoint { get; private set; }
         [field: SerializeField] public Vector3 OnHoldGroundPoint { get; private set; }
 
-        [field: SerializeField] public BasicStructure Structure { get; set; }
+        [field: SerializeField] public StructureBehaviour Structure { get; private set; }
         [field: SerializeField] public StructureDirection Direction { get; set; }
 
-        [field: SerializeField] public List<BasicGround> Selects { get; set; }
-        [field: SerializeField] public List<BasicGround> Blueprints { get; set; }
+        [field: SerializeField] public List<StructureGround> SelectGroundAlls { get; set; } = new();
+        [field: SerializeField] public List<StructureGround> SelectGrounds { get; set; } = new();
+        [field: SerializeField] public List<StructureGround> BlueprintGrounds { get; set; } = new();
 
         [SerializeField] private Vector3 _center;
         [SerializeField] private Vector3 _size;
+        [SerializeField] private StructureBehaviour _structure;
+
+        protected override void OnAwake() {
+            if (Structure != null) {
+                SetStructureLocal(Structure);
+            }
+        }
 
         private void Update() {
             if (Structure == null) {
@@ -38,6 +44,8 @@ namespace Manager {
             if (!ground_point.IsPositiveInfinityAny()) {
                 if (Input.GetMouseButtonDown(MouseButton.LEFT)) {
                     OnDownGroundPoint = Vector3Int.RoundToInt(ground_point);
+
+                    _structure.gameObject.SetActive(false);
                 }
 
                 if (Input.GetMouseButton(MouseButton.LEFT)) {
@@ -74,52 +82,85 @@ namespace Manager {
 
                     _size = StandardSize + distance;
 
-                    foreach (var select in Selects) {
-                        select.ExitGuide();
+                    foreach (var ground in SelectGrounds) {
+                        ground.HideGuide();
                     }
-                    Selects.Clear();
+                    SelectGrounds.Clear();
 
                     var overlaps = Physics.OverlapBox(_center, _size * 0.5f, Quaternion.identity, LayerMasks.GroundMask);
                     foreach (var overlap in overlaps) {
-                        if (overlap.TryGetComponent<BasicGround>(out var ground)) {
+                        if (overlap.TryGetComponent<StructureGround>(out var ground)) {
                             if (ground.IsConstrutible) {
-                                Selects.Add(ground);
+                                ground.ShowGuide(Structure, direction);
+                                ground.Guide.ConnectAround();
 
-                                ground.StartGuide(Structure, direction);
+                                SelectGrounds.Add(ground);
+                                if (!SelectGroundAlls.Contains(ground)) {
+                                    SelectGroundAlls.Add(ground);
+                                }
                             }
                         }
                     }
                 }
+                else {
+                    var unit = Vector3Int.RoundToInt(ground_point) + Vector3.up;
+
+                    _structure.transform.position = unit;
+                    _structure.Direction = Direction;
+                }
             }
 
             if (Input.GetMouseButtonUp(MouseButton.LEFT)) {
-                foreach (var select in Selects) {
-                    select.ReleaseGuide();
-                    select.Preview(select.Guide.instance, select.Guide.direction);
-                    
-                    if (!Blueprints.Contains(select)) {
-                        Blueprints.Add(select);
+                Debug.Log("Connect Start!");
+
+                foreach (var ground in SelectGrounds) {
+                    ground.HideGuide();
+
+                    ground.ShowPreview();
+
+                    SelectGroundAlls.Remove(ground);
+
+                    if (!BlueprintGrounds.Contains(ground)) {
+                        BlueprintGrounds.Add(ground);
                     }
                 }
-                Selects.Clear();
+
+                foreach (var ground in SelectGroundAlls) {
+                    ground.ReleaseGuide();
+                }
+                
+                SelectGrounds.Clear();
+                SelectGroundAlls.Clear();
+                
+                _structure.gameObject.SetActive(true);
             }
         }
+        private void SetStructureLocal(StructureBehaviour structure) {
+            if (_structure != null) {
+                Destroy(_structure.gameObject);
+            }
+
+            Structure = structure;
+
+            _structure = Instantiate(structure);
+        }
+        public static void SetStructure(StructureBehaviour structure) => Instance.SetStructureLocal(structure);
 
         [ContextMenu("Confirm All")]
         private void ConfirmAllLocal() {
-            foreach (var blueprint in Blueprints) {
-                blueprint.Confirm();
+            foreach (var ground in BlueprintGrounds) {
+                ground.Confirm();
             }
 
-            Blueprints.Clear();
+            BlueprintGrounds.Clear();
         }
         [ContextMenu("Cancel All")]
         private void CancelAllLocal() {
-            foreach (var blueprint in Blueprints) {
+            foreach (var blueprint in BlueprintGrounds) {
                 blueprint.Cancel();
             }
 
-            Blueprints.Clear();
+            BlueprintGrounds.Clear();
         }
 
         public static void ConfirmAll() => Instance.ConfirmAllLocal();

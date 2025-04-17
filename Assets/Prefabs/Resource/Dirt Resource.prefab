@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1572906096701669327}
   - component: {fileID: 4017516554992837652}
   m_Layer: 7
-  m_Name: Test Resource
+  m_Name: Dirt Resource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Info>k__BackingField:
-    type: 1
+    type: 4
     weight: 25
   <Data>k__BackingField:
     progress: 0
