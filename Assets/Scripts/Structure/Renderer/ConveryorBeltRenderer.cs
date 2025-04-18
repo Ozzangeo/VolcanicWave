@@ -1,11 +1,13 @@
 ﻿using Resource.GameData;
+using Structure.GameData;
+using Structure.Interface;
 using UnityEngine;
 
 namespace Structure.Renderer {
     public class ConveryorBeltRenderer : MonoBehaviour {
         public const int DIRECTION_ALL = (int)StructureDirection.Right + (int)StructureDirection.Up + (int)StructureDirection.Left + (int)StructureDirection.Down;
 
-        [field: SerializeField] public ConveryorBelt ConveryorBelt { get; private set; }
+        [field: SerializeField] public ConveryorBeltBehaviour ConveryorBelt { get; private set; }
 
         [Header("Require")]
         [SerializeField] private GameObject _end;
@@ -44,14 +46,16 @@ namespace Structure.Renderer {
                     break;
                 case 1:
                     var previous = ConveryorBelt.Previous[0];
-                    if (previous.Direction == ConveryorBelt.Direction) {
+                    var previous_direction = (previous.Direction != StructureDirection.None) ? previous.Direction : StructureBehaviour.VectorToDirection(previous.Position, ConveryorBelt.Position);
+
+                    if (previous_direction == ConveryorBelt.Direction) {
                         _display = Instantiate(_straight, transform);
 
                         _display.transform.rotation = GetRotation(ConveryorBelt.Direction);
                     } else {
                         _display = Instantiate(_coner, transform);
 
-                        _display.transform.rotation = GetRotation(ConveryorBelt.Direction, previous.Direction);
+                        _display.transform.rotation = GetRotation(ConveryorBelt.Direction, previous_direction);
                     }
 
                     break;
@@ -61,7 +65,10 @@ namespace Structure.Renderer {
                     var previous1 = ConveryorBelt.Previous[0];
                     var previous2 = ConveryorBelt.Previous[1];
 
-                    _display.transform.rotation = GetRotation(ConveryorBelt.Direction, previous1.Direction, previous2.Direction);
+                    var previous_direction1 = (previous1.Direction != StructureDirection.None) ? previous1.Direction : StructureBehaviour.VectorToDirection(previous1.Position, ConveryorBelt.Position);
+                    var previous_direction2 = (previous2.Direction != StructureDirection.None) ? previous2.Direction : StructureBehaviour.VectorToDirection(previous2.Position, ConveryorBelt.Position);
+
+                    _display.transform.rotation = GetRotation(ConveryorBelt.Direction, previous_direction1, previous_direction2);
 
                     break;
                 case 3:
@@ -71,33 +78,37 @@ namespace Structure.Renderer {
 
                     break;
             }
+
+            if (_display != null) {
+                _display.transform.localPosition = Vector3.down * 0.5f;
+            }
         }
 
-        private static Quaternion GetRotation(int rotate) => Quaternion.Euler(90.0f, 0.0f, rotate * 90.0f);
+        private static Quaternion GetRotation(int rotate) => Quaternion.Euler(-90.0f, 0.0f, 360.0f - rotate * 90.0f);
         private static Quaternion GetRotation(StructureDirection direction) => GetRotation((int)direction);
         private static Quaternion GetRotation(StructureDirection direction, StructureDirection previous) {
             if (direction == StructureDirection.Down) {
                 if (previous == StructureDirection.Right) {
-                    return GetRotation(direction + 1);
+                    return GetRotation(direction + 2);
                 }
             }
             
             if (previous == StructureDirection.Down) {
                 if (direction == StructureDirection.Right) {
-                    return GetRotation(direction + 2);
+                    return GetRotation(direction - 1);
                 }
             }
 
             if (direction > previous) {
-                return GetRotation(direction + 2);
+                return GetRotation(direction - 1);
             }
 
-            return GetRotation(direction + 1);
+            return GetRotation(direction + 2);
         }
         private static Quaternion GetRotation(StructureDirection direction, StructureDirection previous1, StructureDirection previous2) {
             var other = (DIRECTION_ALL - direction - previous1 - previous2);
 
-            return GetRotation(other + 1);
+            return GetRotation(other - 1);
         }
     }
 }

@@ -9,6 +9,7 @@
 
     [System.Serializable]
     public class ResourceInfo {
+        public string name;
         public ResourceType type = ResourceType.None;
 
         public float weight = 10.0f;

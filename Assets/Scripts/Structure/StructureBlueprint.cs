@@ -1,6 +1,6 @@
 ﻿using Define;
-using Resource.GameData;
 using Structure;
+using Structure.GameData;
 using UnityEngine;
 
 namespace Manager.Blueprint {

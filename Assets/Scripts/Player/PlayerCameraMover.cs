@@ -8,7 +8,7 @@ namespace Player {
         public const float CORNER_SENSITIVITY = 20.0f;
 
         public const float STANDARD_ZOOM = -8.0f;
-        public static readonly Vector3 StandardZoomPoint = new(STANDARD_ZOOM, 0.0f, STANDARD_ZOOM);
+        public static readonly Vector3 StandardZoomPoint = new(0.0f, 0.0f, STANDARD_ZOOM);
 
         [field: SerializeField] public CameraData Data { get; private set; } = new();
 
@@ -23,17 +23,15 @@ namespace Player {
         }
 
         private void Update() {
-            //if (MouseManager.IsMouseInCorner(CORNER_SENSITIVITY)) {
-            //    var mouse_direction = MouseManager.GetMouseDirection();
+            if (MouseManager.IsMouseInCorner(CORNER_SENSITIVITY)) {
+                var mouse_direction = MouseManager.GetMouseDirection();
 
-            //    mouse_direction = ConstValue.Rotate45 * mouse_direction;
+                mouse_direction.z = mouse_direction.y;
+                mouse_direction.y = 0.0f;
 
-            //    mouse_direction.z = mouse_direction.y;
-            //    mouse_direction.y = 0.0f;
-
-            //    var tick = Data.speed.value * Time.deltaTime;
-            //    transform.localPosition += mouse_direction * tick;
-            //}
+                var tick = Data.speed.value * Time.deltaTime;
+                transform.localPosition += mouse_direction * tick;
+            }
 
             ApplyCameraZoom();
         }

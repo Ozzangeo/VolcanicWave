@@ -2,7 +2,7 @@
 
 namespace Structure.Interface {
     public interface IResourceReceivable {
-        public bool IsResourceReceivable(BasicResource resource);
-        public void ReceiveResource(BasicResource resource, IStructure from = null);
+        public bool IsResourceReceivable(ResourceBehaviour resource);
+        public void ReceiveResource(ResourceBehaviour resource, IStructure from = null);
     }
 }

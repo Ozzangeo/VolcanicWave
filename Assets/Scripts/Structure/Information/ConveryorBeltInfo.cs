@@ -1,10 +1,11 @@
 ﻿using Resource.Infomation;
+using UnityEngine;
 
-namespace Structure.Infomation {
-    [System.Serializable]
-    public class ConveryorBeltInfo {
-        public ResourceType type = ResourceType.None;
-        public float speed = 1.0f;
-        public float maxWeight = 30.0f;
+namespace Structure.Information {
+    [CreateAssetMenu(fileName = "Converyor Belt Info", menuName = "Structure/Info/Converyor Belt")]
+    public class ConveryorBeltInfo : StructureInfo {
+        [field: SerializeField] public ResourceType Type { get; private set; } = ResourceType.None;
+        [field: SerializeField] public float Speed { get; private set; } = 1.0f;
+        [field: SerializeField] public float MaxWeight { get; private set; } = 30.0f;
     }
 }
