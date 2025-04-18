@@ -465,6 +465,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Exp Slider
       objectReference: {fileID: 0}
+    - target: {fileID: 6222122422324462091, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_FillRect
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7999400188016573326, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -478,7 +482,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3913045647073014329, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f04e19c267097374d95facc4b130ddd5, type: 3}

@@ -5,6 +5,7 @@ using UnityEngine;
 namespace Weather.Object {
     [CreateAssetMenu(fileName = "Dust Wind Info", menuName = "Weather/Info/DustWind")]
     public class DustWindInfo : ScriptableObject {
+        [field: Tooltip("Unit: Minutes")]
         [field: SerializeField] public float[] RemainTimes { get; private set; } = new float[] {
             10.0f,
             10.0f,
