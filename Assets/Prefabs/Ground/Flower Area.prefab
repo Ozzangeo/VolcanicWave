@@ -822,6 +822,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1291333614274360465}
     m_Modifications:
+    - target: {fileID: 1314884392509294449, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314884392509294449, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314884392509294449, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -1.1096895
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314884392509294449, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1315528574938402219, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -862,9 +878,69 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5947319216927604592, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304936338674475783, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304936338674475783, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304936338674475783, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304936338674475783, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6467960703887254986, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6467960703887254986, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6467960703887254986, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6467960703887254986, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644061370869660093, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7215513365996978669, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7215513365996978669, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7215513365996978669, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7215513365996978669, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7791760512544140602, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
       propertyPath: m_Name
       value: Flower Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 8028079210304445271, guid: 4160ac7b20c740748b9677b569e6753e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

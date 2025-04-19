@@ -8,7 +8,7 @@ namespace Player.GameData {
         public const float MAX_ZOOM_SPEED = 20.0f;
         public const float MIN_ZOOM_SPEED = 1.0f;
         public const float MAX_ZOOM_RATE = 2.0f;
-        public const float MIN_ZOOM_RATE = 0.25f;
+        public const float MIN_ZOOM_RATE = 0.5f;
 
         public Range speed = new(MAX_SPEED, MIN_SPEED, 10.0f);
         public Range zoomSpeed = new(MAX_ZOOM_SPEED, MIN_ZOOM_SPEED, 10.0f);
