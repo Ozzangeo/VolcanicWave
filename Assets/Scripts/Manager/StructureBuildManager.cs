@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utility;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 namespace Manager {
     public class StructureBuildManager : BasicManager<StructureBuildManager> {
@@ -34,7 +35,7 @@ namespace Manager {
         }
 
         private void Update() {
-            if (Structure == null) {
+            if (Structure == null || (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())) {
                 return;
             }
 
@@ -49,6 +50,7 @@ namespace Manager {
 
                 return;
             }
+
 
             var mouse_position = Input.mousePosition;
 

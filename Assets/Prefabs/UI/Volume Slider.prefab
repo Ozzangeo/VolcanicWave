@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ef6903cd106464c92dd145c3e86bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Slider>k__BackingField: {fileID: 0}
+  <Slider>k__BackingField: {fileID: 8138892699370625890}
   _addButton: {fileID: 8080830831917278147}
   _subButton: {fileID: 1548217578657323285}
   <Progress>k__BackingField: 1
