@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Dirt Converyor Belt
   m_EditorClassIdentifier: 
   <Name>k__BackingField: "\uD759 \uBFCC\uB9AC"
-  <Price>k__BackingField: 120
+  <Description>k__BackingField: 
+  <Price>k__BackingField: 70
   <Type>k__BackingField: 4
   <Speed>k__BackingField: 1
   <MaxWeight>k__BackingField: 250

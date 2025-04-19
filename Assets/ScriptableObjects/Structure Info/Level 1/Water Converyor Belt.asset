@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Water Converyor Belt
   m_EditorClassIdentifier: 
   <Name>k__BackingField: "\uBB3C \uBFCC\uB9AC"
-  <Price>k__BackingField: 80
+  <Description>k__BackingField: 
+  <Price>k__BackingField: 50
   <Type>k__BackingField: 1
   <Speed>k__BackingField: 1
   <MaxWeight>k__BackingField: 100
