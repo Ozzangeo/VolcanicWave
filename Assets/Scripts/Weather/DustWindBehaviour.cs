@@ -8,6 +8,7 @@ using Weather.Object;
 namespace Weather {
     public class DustWindBehaviour : MonoBehaviour {
         [field: SerializeField] public DustWindInfo Info { get; private set; }
+        [SerializeField] private AudioClip _sfxClip;
 
         [field: SerializeField] public Text RemainTimeText { get; private set; }
 
@@ -55,6 +56,8 @@ namespace Weather {
 
         private void DustWind() {
             Debug.Log("Dust Wind");
+
+            AudioManager.Play(_sfxClip, Manager.AudioType.SFX);
 
             var grounds = GroundManager.Instance.Grounds;
 

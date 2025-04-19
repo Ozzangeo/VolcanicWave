@@ -20,6 +20,11 @@ namespace Manager {
             SourceSFX = gameObject.AddComponent<AudioSource>();
         }
 
+        private void Update() {
+            SourceBGM.volume = Settings.BgmVolume;
+            SourceSFX.volume = Settings.SfxVolume;
+        }
+
         public static void Play(AudioClip clip, AudioType type) {
             var instance = Instance;
             
@@ -28,9 +33,11 @@ namespace Manager {
                     instance.SourceBGM.clip = clip;
                     instance.SourceBGM.volume = instance.Settings.BgmVolume;
 
+                    instance.SourceBGM.Play();
+
                     break;
                 case AudioType.SFX:
-                    instance.SourceBGM.PlayOneShot(clip, instance.Settings.SfxVolume);
+                    instance.SourceSFX.PlayOneShot(clip, instance.Settings.SfxVolume);
 
                     break;
             }

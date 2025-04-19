@@ -132,8 +132,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Info>k__BackingField: {fileID: 11400000, guid: ed5123a7e763c294cade1becf80c291c, type: 2}
+  _sfxClip: {fileID: 8300000, guid: 2ee0b9771746fff4ebfc64f9f18a14bc, type: 3}
   <RemainTimeText>k__BackingField: {fileID: 3132890878485219510}
-  <FadeImage>k__BackingField: {fileID: 0}
   _index: 0
 --- !u!223 &2636189112757753554
 Canvas:

@@ -23,6 +23,9 @@ namespace Manager {
         [field: SerializeField] public List<GroundBehaviour> SelectGrounds { get; set; } = new();
         [field: SerializeField] public List<GroundBehaviour> BlueprintGrounds { get; set; } = new();
 
+        [field: SerializeField] public AudioClip ConfirmClip { get; set; }
+        [field: SerializeField] public AudioClip CancelClip { get; set; }
+
         [SerializeField] private Vector3 _center;
         [SerializeField] private Vector3 _size;
         [SerializeField] private StructureBehaviour _preview;
@@ -206,6 +209,8 @@ namespace Manager {
                     }
                 }
 
+                AudioManager.Play(ConfirmClip, AudioType.SFX);
+
                 BlueprintGrounds.Clear();
             }
         }
@@ -216,6 +221,8 @@ namespace Manager {
                     ground.Cancel();
                 }
             }
+
+            AudioManager.Play(CancelClip, AudioType.SFX);
 
             BlueprintGrounds.Clear();
         }
