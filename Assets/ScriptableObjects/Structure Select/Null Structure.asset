@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7f0ac2c8d9f254690c788372f41ce6, type: 3}
   m_Name: Null Structure
   m_EditorClassIdentifier: 
-  <Preview>k__BackingField: {fileID: 0}
+  <Preview>k__BackingField: {fileID: 1290616952, guid: 39a952d7ef3a9ab47bd9653587ba7457, type: 3}
   <Structure>k__BackingField: {fileID: 3944982831827660555, guid: eb18de8e293cdf749b3a69966ae145b6, type: 3}
   <ShortKey>k__BackingField: 114
   <SubShortKeys>k__BackingField: 

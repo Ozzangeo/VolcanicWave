@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7f0ac2c8d9f254690c788372f41ce6, type: 3}
   m_Name: Sun Converyor Belt
   m_EditorClassIdentifier: 
-  <Preview>k__BackingField: {fileID: 0}
+  <Preview>k__BackingField: {fileID: 626913639, guid: 39a952d7ef3a9ab47bd9653587ba7457, type: 3}
   <Structure>k__BackingField: {fileID: 3814767191180258074, guid: bcac9deb7937b7941888e72dae9d5167, type: 3}
   <ShortKey>k__BackingField: 119
   <SubShortKeys>k__BackingField: 

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Dust Wind Info
   m_EditorClassIdentifier: 
   <RemainTimes>k__BackingField:
-  - 0.1
-  - 0.1
-  - 0.1
-  - 0.1
+  - 10
+  - 10
+  - 10
+  - 10
   <GroundRemoveRates>k__BackingField:
   - 5
   - 10

@@ -89,21 +89,21 @@ namespace Structure.Renderer {
         private static Quaternion GetRotation(StructureDirection direction, StructureDirection previous) {
             if (direction == StructureDirection.Down) {
                 if (previous == StructureDirection.Right) {
-                    return GetRotation(direction + 2);
+                    return GetRotation(direction - 1);
                 }
             }
             
             if (previous == StructureDirection.Down) {
                 if (direction == StructureDirection.Right) {
-                    return GetRotation(direction - 1);
+                    return GetRotation(direction);
                 }
             }
 
             if (direction > previous) {
-                return GetRotation(direction - 1);
+                return GetRotation(direction);
             }
 
-            return GetRotation(direction + 2);
+            return GetRotation(direction - 1);
         }
         private static Quaternion GetRotation(StructureDirection direction, StructureDirection previous1, StructureDirection previous2) {
             var other = (DIRECTION_ALL - direction - previous1 - previous2);

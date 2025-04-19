@@ -211,10 +211,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 412740737755994662, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1890978708, guid: 39a952d7ef3a9ab47bd9653587ba7457, type: 3}
+    - target: {fileID: 510178882349166889, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -793142356, guid: 39a952d7ef3a9ab47bd9653587ba7457, type: 3}
+    - target: {fileID: 762309545201347601, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 762309545201347601, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1673952682448068449, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
       propertyPath: m_Name
       value: Dirt Slider
       objectReference: {fileID: 0}
+    - target: {fileID: 5001006301201023061, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1857649985, guid: 39a952d7ef3a9ab47bd9653587ba7457, type: 3}
     - target: {fileID: 7999400188016573326, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -225,6 +245,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7999400188016573326, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
       propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999400188016573326, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074339568897434435, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8074339568897434435, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -336,10 +368,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 412740737755994662, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 412740737755994662, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1890978708, guid: 39a952d7ef3a9ab47bd9653587ba7457, type: 3}
+    - target: {fileID: 510178882349166889, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1191275444, guid: 39a952d7ef3a9ab47bd9653587ba7457, type: 3}
+    - target: {fileID: 762309545201347601, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 762309545201347601, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1673952682448068449, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
       propertyPath: m_Name
       value: Sun Slider
       objectReference: {fileID: 0}
+    - target: {fileID: 5001006301201023061, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1680552582, guid: 39a952d7ef3a9ab47bd9653587ba7457, type: 3}
     - target: {fileID: 7999400188016573326, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -350,6 +406,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7999400188016573326, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
       propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999400188016573326, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -460,6 +520,22 @@ PrefabInstance:
     - target: {fileID: 193486777347521283, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 412740737755994662, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1890978708, guid: 39a952d7ef3a9ab47bd9653587ba7457, type: 3}
+    - target: {fileID: 510178882349166889, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1497558212, guid: 39a952d7ef3a9ab47bd9653587ba7457, type: 3}
+    - target: {fileID: 762309545201347601, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -0.99999696
+      objectReference: {fileID: 0}
+    - target: {fileID: 762309545201347601, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1673952682448068449, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
       propertyPath: m_Name
@@ -591,10 +667,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 412740737755994662, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1890978708, guid: 39a952d7ef3a9ab47bd9653587ba7457, type: 3}
+    - target: {fileID: 510178882349166889, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1745353013, guid: 39a952d7ef3a9ab47bd9653587ba7457, type: 3}
+    - target: {fileID: 762309545201347601, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 762309545201347601, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1673952682448068449, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
       propertyPath: m_Name
       value: Water Slider
       objectReference: {fileID: 0}
+    - target: {fileID: 5001006301201023061, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1211832275, guid: 39a952d7ef3a9ab47bd9653587ba7457, type: 3}
     - target: {fileID: 7999400188016573326, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -605,6 +701,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7999400188016573326, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
       propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999400188016573326, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999400188016573326, guid: f04e19c267097374d95facc4b130ddd5, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -67,7 +67,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dcdded66bc83054fb502dad4779e60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Object>k__BackingField: {fileID: 0}
+  <Info>k__BackingField: {fileID: 0}
   <PreviewImage>k__BackingField: {fileID: 5140915115654160639}
   <Text>k__BackingField: {fileID: 5975233164871534999}
   <Highlight>k__BackingField: {fileID: 5292138360609139720}

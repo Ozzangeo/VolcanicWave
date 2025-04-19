@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f7f0ac2c8d9f254690c788372f41ce6, type: 3}
   m_Name: Water Converyor Belt
   m_EditorClassIdentifier: 
-  <Preview>k__BackingField: {fileID: 0}
+  <Preview>k__BackingField: {fileID: 1745353013, guid: 39a952d7ef3a9ab47bd9653587ba7457, type: 3}
   <Structure>k__BackingField: {fileID: 3814767191180258074, guid: bfb529c6d77201d4b883c78e31170739, type: 3}
   <ShortKey>k__BackingField: 113
   <SubShortKeys>k__BackingField: 
