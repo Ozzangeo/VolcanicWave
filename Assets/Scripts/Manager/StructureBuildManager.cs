@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utility;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 namespace Manager {
     public class StructureBuildManager : BasicManager<StructureBuildManager> {
@@ -47,6 +48,10 @@ namespace Manager {
             if (Input.GetKeyDown(KeyCode.C)) {
                 CancelAll();
 
+                return;
+            }
+
+            if (EventSystem.current.IsPointerOverGameObject()) {
                 return;
             }
 
