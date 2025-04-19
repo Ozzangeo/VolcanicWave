@@ -35,7 +35,7 @@ namespace Manager {
         }
 
         private void Update() {
-            if (Structure == null) {
+            if (Structure == null || (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())) {
                 return;
             }
 
@@ -51,9 +51,6 @@ namespace Manager {
                 return;
             }
 
-            if (EventSystem.current.IsPointerOverGameObject()) {
-                return;
-            }
 
             var mouse_position = Input.mousePosition;
 
