@@ -13,7 +13,7 @@ public class StructureBuildSelectUI : MonoBehaviour {
 
     private void Update() {
         PreviewImage.sprite = Info.Preview;
-        Text.text = $"{Info.Structure.Info.Name}";
+        Text.text = $"{Info.Structure.Info.Name} ({Info.Structure.Info.Price:###,###0})";
 
         Highlight.SetActive(StructureBuildManager.Instance.Structure == Info.Structure);
 
